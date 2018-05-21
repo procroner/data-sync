@@ -1,0 +1,11 @@
+### 文件目录结构：
+
+├── common：shell脚本的公共方法
+├── lib：php脚本的公共类
+├── mails：发送邮件的脚本
+├── monitor：监控数据脚本
+├── sqls：表sql
+├── tables：同步表的脚本
+│   ├── mysql：同步到mysql的脚本
+│   └── hive：同步到hive的脚本
+└── tools：工具类脚本

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+export TARGET_MYSQL_HOST=89
+export TARGET_MYSQL_DB=yc_bit
+
+#测试token
+export TEST_DINGDING_TOKEN=d071a6d1ede0e70e324045e9ba46f37aedc1c896141901eaa5b1868b1ed5f3b8
+
+#正式token
+export DINGDING_TOKEN=8ff152bd9e3b91c6cfef96c95e7382bbc60e36f53025fd19461f6bb623f82340

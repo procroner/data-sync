@@ -1,0 +1,303 @@
+x：停用
+o：已改写
+#：注释掉
+?：不确定，未做处理
+$：工具脚本
+@：邮件
+!：监控
+%：ETL
+
+#%   /home/y/var/www/bi/bin/run/service_order_finish.sh [service_order_finish ~ load]
+%    /home/y/var/www/bi/bin/run/service_order_all.sh [ods_service_order ~ load]
+%    /home/y/var/www/bi/bin/run/ods_dispatch.sh [ods_dispatch ~ load]
+%    /home/y/var/www/bi/bin/run/dispatch_history.sh [ods_dispatch_history ~ load]
+%    /home/y/var/www/bi/bin/run/service_order_charge.sh [ods_service_order_charge ~ load]
+
+%    /home/lgq/git/bi_hadoop/bin/run/user_jihuo.sh  <user_jihuo> [user_jihuo ~ dump]
+%    /home/lgq/git/bi_hadoop/bin/db/rc_suspect_order.sh  <ods_rc_suspect_order> [rc_suspect_order ~ dump]
+%    /home/lgq/git/bi_hadoop/bin/run/driver_accept_order.sh      <driver_end_order_dt> <driver_accept_order_dt> [ods_service_order ~ dump]                                                                                           [driver_accept_end_order]driver_accept_end_order_${dt}.txt
+%    /home/y/var/www/bi/bin/run/driver_accept_order.sh [ods_service_order ~ load]
+#%   /home/lgq/git/bi_hadoop/bin/db/corporate.sh  [? ~ dump]corporate_${dt}.txt
+%    /home/lgq/git/bi_hadoop/bin/db/device_dt.sh <device_dt> [ ~ dump]device_${dt}.txt
+%    /home/lgq/git/bi_hadoop/bin/run/driver_finish.sh  [driver_finish ~ dump]driver_finish_$dt.txt
+#%   /home/lgq/git/bi_hadoop/bin/db/device_driver_car.sh [device_driver_car ~ dump]device_driver_car.txt
+#%   /home/y/var/www/bi/bin/run/car.sh  [ods_car ~ load]
+%    /home/y/var/www/bi/bin/run/company_accept_order.sh    [company_accept_order ~ load]
+
+
+%x    /home/y/var/www/bi/bin/run/driver_charge_record.sh  [driver_charge_record ~ load]
+
+
+
+%    /home/lgq/git/bi_hadoop/bin/db/company_log.sh  <ods_company_log ~ dump>
+%    /home/lgq/git/bi_hadoop/bin/db/company_log_utoc.php <ods_company_log ~ filter>
+%    /home/lgq/git/bi_hadoop/bin/db/company_log_load.sh    <ods_company_log ~ load>
+
+o%    /home/lgq/git/bi_hadoop/bin/run/dispatch_is_assigned.sh  <is_assigned_order>  <is_assigned_order_city>  [is_assigned_order_city_cnt ~ dump]
+%    /home/y/var/www/bi/bin/run/alloc_change_auto.sh [alloc_change_order_cnt ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/run/driver_jihuo_driver.sh <driver_jihuo_driver> [driver_jihuo_driver ~ dump]
+o%    /home/y/var/www/bi/bin/run/driver_jihuo_driver.sh  [driver_jihuo_driver ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/run/driver_jihuo.sh <driver_jihuo>o [driver_jihuo ~ dump]
+o%    /home/y/var/www/bi/bin/run/driver_jihuo.sh  [driver_jihuo ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/run/dispatch_detail_stat_by_order.sh [dispatch_detail_stat_by_order ~ dump]
+o%    /home/y/var/www/bi/bin/run/dispatch_detail_stat_by_order.sh [dispatch_detail_stat_by_order ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/db/corporate_extensive.sh [ods_corporate_extensive ~ dump]
+o%    /home/y/var/www/bi/bin/run/corporate_extensive.sh [ods_corporate_extensive ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/run/order_funnel_city.sh [dispatch_stat ~ dump] <dispatch_stat>
+o%    /home/y/var/www/bi/bin/run/dispatch_stat.sh [dispatch_stat ~ load]
+
+%    /home/lgq/git/bi_hadoop/bin/run/order_finish.sh <bb_order_finish> [bb_order_finish ~ dump]
+%    /home/y/var/www/bi/bin/run/order_finish.sh [bb_order_finish ~ load]
+
+%    /home/lgq/git/bi_hadoop/bin/run/corporate_jihuo.sh [corporate_active ~ dump]
+%    /home/y/var/www/bi/bin/run/corporate_active.sh   [corporate_active ~ load]
+
+%    /home/lgq/git/bi_hadoop/bin/db/ods_app_source_trace_log.sh  [app_source_trace_log ~ dump]
+%    /home/y/var/www/bi/bin/run/ods_app_source_trace_log.sh  [app_source_trace_log ~ load]
+
+%    /home/lgq/git/bi_hadoop/bin/db/active_user.sh  [visit_ativate_user ~ dump]
+%    /home/y/var/www/bi/bin/run/active_user.sh   [visit_ativate_user ~ load]
+
+%    /home/lgq/git/bi_hadoop/bin/db/order_subtract_addprice.sh <ods_order_subtract_addprice> [ods_order_subtract_addprice ~ dump]
+%    /home/y/var/www/bi/bin/run/order_subtract_addprice.sh [ods_order_subtract_addprice ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/run/slave_amount_order.sh   [slave_amount_order ~ dump]
+o%    /home/y/var/www/bi/bin/run/slave_amount_order.sh  [slave_amount_order ~ load]
+
+o%    /home/y/lgq/git/bi_hadoop/bin/db/driver_all.sh [ods_driver ~ dump]
+o%    /home/y/var/www/bi/bin/run/driver_all.sh [ods_driver ~ load]
+
+o%    /home/lgq/git/bi_hadoop/bin/db/user_points.sh  <ods_user_points> [ods_user_points ~ dump]
+o%    /home/y/var/www/bi/bin/run/user_points.sh  [ods_user_points ~ load]
+
+
+o%  42 2 * * *  /home/y/var/www/bi/bin/run/user_jihuo_order_user_ext.sh [user_jihuo_ext] [user_jihuo_order] [user_jihuo_user]
+o%   2 * * * *   /home/y/var/www/bi/bin/db_part/activity_rebate_log_hour.php [activity_rebate_log]
+o%   1 4 * * *   /home/y/var/www/bi/bin/run/first_recharge_user.php [first_recharge_user]
+%   30 3 * * *   /home/y/var/www/bi/utils/liuxiaohua/BI_driver_service_quality.php [driver_service_quality]
+o%  30 5 * * * sunliang /bin/bash /home/y/var/www/bi/bin/db_part/bi_yunying_forecast.sh [bi_yunying_forecast]
+%   0 6 * * *    /home/y/var/www/bi/bin/run/BI_yunying_day_order.php [chongfan_yh] [order_allowance_perference_citys]
+%   50 5 * * *  /home/y/var/www/bi/bin/run/dm_order_income_cost.php [chongfan_yh] [dm_order_income_cost]
+%    /home/y/var/www/bi/bin/db_part/user_extensive.php [ods_user_extensive]
+%    /home/y/var/www/bi/bin/db_full/company.php [ods_company]o
+%    /home/y/var/www/bi/bin/db_full/car_type.php [ods_car_type]o
+%    /home/y/var/www/bi/bin/db_full/user_source.php [ods_user_source]o
+%    /home/y/var/www/bi/bin/db_full/personal_contact.php [ods_personal_contact]o
+%    /home/y/var/www/bi/bin/db_full/operator.php [ods_operator]o
+%    /home/y/var/www/bi/bin/db_part/popul_company.php [ods_popul_company]o
+%    /home/y/var/www/bi/bin/db_part/invite_code_log.php  [ods_invite_code_log]o
+%    /home/y/var/www/bi/bin/db_full/base_region.php  [ods_base_region]o
+%    /home/y/var/www/bi/bin/run/device_driver_car.php [device_driver_car_bi]o
+%    /home/y/var/www/bi/bin/db_part/coupon_present.php [ods_coupon_present]o
+%    /home/y/var/www/bi/bin/db_full/corporate.php [ods_corporate]o
+%    /home/y/var/www/bi/bin/db_part/mac_address.php  [ods_mac_address]o
+%    /home/y/var/www/bi/bin/db_full/base_mobile.php  [ods_base_mobile]o
+%    /home/y/var/www/bi/bin/run/user_city.php [user_city]o
+%    /home/y/var/www/bi/bin/db_part/user_oauth.php [ods_user_oauth]o
+%    /home/y/var/www/bi/bin/db_part/coupon_member.php [ods_coupon_member]o
+%    /home/y/var/www/bi/bin/db_full/coupon.php [ods_coupon]o
+%    /home/y/var/www/bi/bin/db_full/activity.php  [ods_activity]o
+%    /home/y/var/www/bi/bin/db_part/operator_login.php [ods_operator_login]o
+%    /home/lgq/git/bi_hadoop/bin/db/service_order_distinct.sh <ods_service_order_distinct_1>
+%    /home/lgq/git/bi_hadoop/bin/db/user_extensive_distinct.sh  <ods_user_extensive_distinct>
+o%    /home/lgq/git/bi_hadoop/bin/db/car_dt.sh [ods_car]o
+%    /home/lgq/git/bi_hadoop/bin/db/user_distinct.sh  <ods_user_distinct>
+%    /home/lgq/git/bi_hadoop/bin/db/rc_rebate_result.sh  <ods_rc_rebate_result>
+%    /home/lgq/git/bi_hadoop/bin/db/car_type_dt.sh  <ods_car_type>
+%    /home/lgq/git/bi_hadoop/bin/db/corporate_dept.sh  <ods_corporate_dept>
+%    /home/lgq/git/bi_hadoop/bin/db/operator.sh  <ods_operator>
+%    /home/lgq/git/bi_hadoop/bin/db/labour_company.sh  <ods_labour_company>
+%    /home/lgq/git/bi_hadoop/bin/db/user_points_history.sh   <ods_user_points_history>
+%    /home/lgq/git/bi_hadoop/bin/db/order_source.sh  <ods_order_source>
+%    /home/y/var/www/bi/bin/db_full/order_source.php [ods_order_source]o
+o%    /home/y/var/www/bi/bin/db_full/dim_city.php  [dim_city]o
+%    /home/y/var/www/bi/bin/db_part/driver_invite.php  [ods_driver_invite]o
+%    /home/y/var/www/bi/bin/db_full/oauth_clients.php  [oauth_clients]
+%    /home/y/var/www/bi/bin/db_part/init_recharge_transaction.php [ods_recharge_transaction]
+%    /home/y/var/www/bi/bin/db_part/dianru_mac.php  [ods_dianru_mac]
+%    /home/y/var/www/bi/bin/db_part/weidao_device.php [ods_weidao_device]
+%    /home/y/var/www/bi/bin/db_part/apns_devices.php   [ods_apns_devices]
+%    /home/y/var/www/bi/bin/db_part/privilege_user.php  [privilege_user]o
+%    /home/y/var/www/bi/bin/db_part/brand_car.php   [ods_brand_car]o
+%    /home/y/var/www/bi/bin/db_part/brand_car_driver_relation.php  [ods_brand_car_driver_relation]o
+%    /home/y/var/www/bi/bin/db_part/brand_car_wage.php  [ods_brand_car_wage]
+%    /home/y/var/www/bi/bin/db_part/driver_invite_relation.php [ods_driver_invite_relation]
+%    /home/y/var/www/bi/bin/db_part/corporate_dept.php [ods_corporate_dept]
+%    /home/y/var/www/bi/bin/run/corporate_ext_day.php   [corporate_ext_day]o
+%    /home/y/var/www/bi/bin/db_part/driver_punish_record.php  [ods_driver_punish_record]
+%    /home/y/var/www/bi/bin/db_part/rc_passenger_black_list.php   [rc_passenger_black_list]
+%    /home/y/var/www/bi/bin/db_part/rc_passenger_white_list.php  [rc_passenger_white_list]
+%    /home/y/var/www/bi/bin/db_part/package_record.php [ods_package_record]o
+%    /home/y/var/www/bi/bin/db_part/passenger_subtract.php [ods_passenger_subtract]
+%    /home/y/var/www/bi/bin/db_part/first_cor_recharge.php  [first_cor_recharge]
+%    /home/y/var/www/bi/bin/db_part/punish_rules.php  [ods_punish_rules]
+%    /home/y/var/www/bi/bin/db_part/punish_type.php  [ods_punish_type]
+%    /home/y/var/www/bi/bin/run/trd_order_finish.php [dwmis_kpi_data]
+%    /home/y/var/www/bi/bin/run/mbr_user_reg.php [dwmis_kpi_data]
+%    /home/y/var/www/bi/utils/charge/update_face_order_chunlong.php [driver_charge]o
+o%    /home/y/var/www/bi/bin/run/quick_finish_order.php  [quick_finish_order]o
+%    /home/y/var/www/bi/bin/run/baidu_roi_user.php [baidu_roi_user]o
+%    /home/y/var/www/bi/bin/run/order_cancel.php [bb_order_cancel]
+%    /home/y/var/www/bi/bin/run/user_analysis_detail.php [user_analysis_detail]o
+%    /home/y/var/www/bi/bin/run/report_cost_control_new.php  [report_cost_control]
+#%   /home/y/var/www/bi/bin/db_part/activity_rebate_log.php  [activity_rebate_log]
+%    /home/y/var/www/bi/bin/run/get_alloc_change_order.php  [alloc_changer_order_list]
+%    /home/y/var/www/bi/bin/run/get_driver_alloc_change_order.php [driver_alloc_changer_order_list]
+%    /home/y/var/www/bi/bin/run/report_auto_dispatch.php 4,84  [order_dispatch]
+o%    /home/y/var/www/bi/bin/run/first_recharge_data.php  [first_recharge_account]
+%    /home/y/var/www/bi/bin/run/recharge_return_data.php [recharge_return_data]
+%    /home/y/var/www/bi/bin/run/BI_yunying_day_order.php [chongfan_yh] [order_allowance_perference_citys]
+%    /home/y/var/www/bi/bin/run/order_product_income.php [chongfan_yh_product] [order_product_income]
+%    /home/y/var/www/bi/bin/run/order_source_info.php [chongfan_yh_product] [order_source_info]
+%    /home/y/var/www/bi/bin/run/BI_yunying_day_dist.php  [order_funnel_city]
+%    /home/y/var/www/bi/bin/run/BI_yunying_day_register.php [user_register_activate_city]
+%    /home/y/var/www/bi/bin/run/driver_war.php  [driver_war]
+%    /home/y/var/www/bi/bin/run/alloc_city.php  [alloc_city]
+%    /home/y/var/www/bi/bin/run/report_auto_dispatch_city.php  [order_dispatch_city]
+%    /home/y/var/www/bi/bin/run/yop_order_dispatch.php [yop_order_dispatch]
+%    /home/y/var/www/bi/bin/run/brand_order_dispatch.php [brand_order_dispatch]
+%    /home/y/var/www/bi/bin/run/driver_stat_city.php [driver_stat_city]
+%    /home/y/var/www/bi/utils/getCountryProvinceByIp.php  [ip_data]
+%    /home/y/var/www/bi/bin/run/activity_user.php [activity_user]
+%    /home/y/var/www/bi/bin/run/market_detail.php  [market_detail_reg] [market_detail_active] [market_detail_activate] [market_detail_no_active_order]                                                                  [market_detail_finish_order]
+%    /home/y/var/www/bi/bin/run/order_alloc_fail.php [order_alloc_fail]
+%    /home/y/var/www/bi/bin/run/order_cnt_city.php  [order_cnt_city]
+%    /home/y/var/www/bi/bin/run/order_rate_city.php [order_rate_city]
+%    /home/y/var/www/bi/bin/run/order_driver_amount_city.php [order_driver_amount_city]
+%    /home/y/var/www/bi/bin/run/coupon_receive.php  [bb_coupon_receive]
+%    /home/y/var/www/bi/bin/run/sms_detail.php  [sms_detail_event]
+%    /home/y/var/www/bi/bin/run/subject_dianru.php  [subject_dianru]
+%    /home/y/var/www/bi/bin/run/corporate_stat.php  [corporate_activate] [corporate_stat]
+%    /home/y/var/www/bi/bin/run/coupon_monitor.php  [coupon_monitor]
+%    /home/y/var/www/bi/bin/run/face_pay_driver_accept_order.php  [face_pay_driver_accept_order]
+%    /home/y/var/www/bi/utils/stat/dache_amount.php [subtract_amount]
+%    /home/y/var/www/bi/utils/stat/dache_rukou.php  [freecar_order]
+%    /home/y/var/www/bi/utils/stat/report_order_day.php  [report_order_day] [report_order_hour]
+%    /home/y/var/www/bi/utils/stat/report_user_day.php   [report_user_day]
+%    /home/y/var/www/bi/utils/stat/report_yunli_day.php [report_yunli_day ~ update]
+%    /home/y/var/www/bi/utils/stat/report_operate_day.php   [report_operate_day]
+%    /home/y/var/www/bi/utils/stat/report_dache_day.php  [report_dache_day]
+%    /home/y/var/www/bi/bin/run/driver_active_ordercnt.php   [driver_active_ordercnt]
+%    /home/y/var/www/bi/bin/run/quick_driver_accept.php  [quick_driver_accept_all]
+%    /home/y/var/www/bi/bin/run/first_create_order.php   [first_user_tmp]
+%    /home/y/var/www/bi/utils/stat/report_day_driver.php [report_day_driver ~ update]
+%    /home/y/var/www/bi/utils/stat/coupon_receive_used.php   [coupon_receive_used ~ update]
+%    /home/y/var/www/bi/utils/fengkong/order_favorable.php  [order_favorable]
+%    /home/y/var/www/bi/utils/subject/sub_driver_data_city.php  [driver_data_by_city]
+%    /home/y/var/www/bi/utils/subject/sub_driver_data_drivertype.php [driver_data_by_drivertype]
+%    /home/y/var/www/bi/utils/subject/sub_driver_data_company.php   [driver_data_by_company]
+%    /home/y/var/www/bi/bin/db_part/passenger_active.php [passenger_active]
+%    /home/y/var/www/bi/utils/user_reg_jihuo.php [user_register_activate_data]
+%    /home/y/var/www/bi/bin/run/corporate_finish_order.php  [enterprise_finish_order_report]
+%    /home/y/var/www/bi/bin/run/corporate_base_data.php  [corporate_base_data]
+%    /home/liuguilong/src/user_experience_response.php  [user_experience ~ update]
+%    /home/lgq/git/bi_hadoop/bin/db/activity_rebate_award_user.sh  <ods_activity_rebate_award_user>
+%    /home/lgq/git/bi_hadoop/bin/db/driver_invite_relation.sh   <ods_driver_invite_relation>
+%    /home/lgq/git/bi_hadoop/bin/run/passenger_subtract.sh  [ods_passenger_subtract]
+%    /home/lgq/git/bi_hadoop/bin/db/service_order_distinct_for_bb_order_finish.sh   <dim_service_order_distinct>
+%    /home/lgq/git/bi_hadoop/bin/db/dw_dispatch_change.sh   <dw_dispatch_change>
+%    /home/lgq/git/bi_hadoop/bin/db/account_history_dt.sh  <account_history>
+o%    /home/lgq/git/bi_hadoop/bin/db/driver_charge_record_dt.sh  <driver_charge_record> [driver_charge_record]
+%    /home/y/var/www/bi/bin/run/dm_order_income_cost.php [chongfan_yh] [dm_order_income_cost]
+%    /home/lgq/git/bi_hadoop/bin/run/order_data_rank_leave_driver.sh  [order_data_rank]
+%    /home/lgq/git/bi_hadoop/bin/run/order_data_rank_leave_user.sh   [order_data_rank]
+185 php /home/chenbing/git/bi/bin/run/dm_order_income_cost.php      124.250.26.54   3   1   修改 禁用
+
+
+pycamel:
+account_bdp
+account_history_bdp
+corporate_active_bdp
+driver_jihuo
+driver_jihuo_driver
+ods_user_extensive
+ods_user_bdp
+ods_bound
+ods_car_brand
+ods_car_model
+ods_corporate
+ods_corporate_dept
+ods_corporate_extensive
+ods_corporate_member
+ods_driver_appeal
+ods_driver_assess_record
+ods_driver_assess_rule
+ods_driver_cycle_setting
+ods_driver_execute_record
+ods_driver_feedback
+ods_driver_register
+ods_market_user
+order_key_value
+ods_rc_suspect_order
+ods_service_order
+ods_service_order_today
+ods_service_order_charge
+ods_service_order_ext
+ods_user_bdp
+[x]ods_user_extensive_bdp
+ods_user_points
+[x]user_jihuo_user_bdp
+[x]user_jihuo_order_bdp
+[x]user_jihuo_user_bdp
+[x]user_jihuo_ext_bdp
+
+[account_history]
+/home/lgq/git/bi_hadoop/utils/wanghai/account_history.php  每小时15分
+/home/y/var/www/bi/utils/wanghai/account_history_db_insert.php  每小时15分
+/home/y/var/www/bi/utils/wanghai/account_history_db_insert.sh
+
+x    /home/y/var/www/bi/bin/run/user_jihuo.php
+x：  5 * * * *   /home/y/var/www/bi/bin/yc_account/fa_recharge_transaction.sh
+x：  5 * * * *   /home/y/var/www/bi/bin/yc_account/fa_balance_record.sh
+x：  10 * * * *  /home/y/var/www/bi/bin/yc_account/hive_account.sh
+#   10 * * * *   /home/y/var/www/bi/utils/prewarning/slave_warning.php
+$   */2 * * * *  /home/y/var/www/bi/utils/wanghai/task_init.py
+$   1 2 * * *    /home/y/var/www/bi/utils/wanghai/ods_suspect_order.sh
+$   1 0 * * *    /home/y/var/www/bi/utils/wanghai/system_task_start.php
+x   28 * * * *   /home/y/var/www/bi/utils/ribao_recharge_amount_1053_all_lgq.php
+?   1 6 * * *    /home/y/var/www/bi/bin/run/account_hour.sh
+#   1 4 * * 1    /home/y/var/www/bi/utils/wuchao/rc_driver_amount.php
+#   1 4 * * 1    /home/y/var/www/bi/utils/wuchao/rc_person_invoice_amount.php
+#   1 4 * * 1    /home/y/var/www/bi/utils/wuchao/rc_user_amount.php
+#   1 8 * * 1    /home/y/var/www/bi/utils/business_yongche_sensitivity_num.php
+#   1 7 1 * *    /home/y/var/www/bi/utils/sunliang/export_company_driver.php
+!   1 4 * * *    /home/y/var/www/bi/utils/wuchao/table_monitor.php
+#   1 8 * * *    /home/y/var/www/bi/utils/wuchao/rc_coupon.php
+#   1 8 * * *    /home/y/var/www/bi/utils/sunliang/export_recharge_user.php
+@   1 1 * * *    /home/y/var/www/bi/utils/wuchao/charge_back_monitor.php
+!   25 7-23 * * * /home/y/var/www/bi/utils/wuchao/amount_monitor.php
+!   1 5 * * *    /home/y/var/www/bi/utils/wuchao/charge_back_sms.php
+#   30 10 * * *  /home/y/var/www/bi/utils/ribao_city_data.php
+$   */15 23 * * * /home/y/var/www/bi/utils/montior/kill_mysql_proc.php
+@#   1 8 * * *   /home/y/var/www/bi/utils/new_coupon_info.php
+!   1 5 * * *    /home/y/var/www/bi/utils/wuchao/yunying_day_monitor.php
+#   10 8 * * *   /home/y/var/www/bi/utils/liuxiaohua/export_service_order_huyou.php
+#   1 9 * * *    /home/y/var/www/bi/utils/liuyong/expire_tip.php
+#   20 7 * * *   /home/y/var/www/bi/utils/liuxiaohua/export_driver_operation_data_jihuo.php
+#   20 8 * * *   /home/y/var/www/bi/utils/liuxiaohua/export_driver_operation_data_reg.php
+#   40 7 * * *   /home/y/var/www/bi/utils/liuxiaohua/export_driver_question_data.php
+$   */1 * * * * /home/y/var/www/bi/utils/liuyong/cron/schedule.php
+x   40 5 * * *   /home/y/var/www/bi/bin/run/driver_charge_record.sh
+x   40 6 * * *  /home/y/var/www/bi/bin/run/fixed_price_order.sh
+#   30 8 * * *  /home/y/var/www/bi/utils/reporting/export_yunying_day.php
+#   40 8 * * *  /home/y/var/www/bi/utils/chenbing/email_daily_operation_report.php
+#   1 8 * * 1   /home/y/var/www/bi/utils/reporting/bi_privilege_user.php
+$    /home/y/var/www/bi/bin/run/checkTableColumn.php
+#x   /home/y/var/www/bi/bin/run/pay_recharge_daily.php
+#x   /home/y/var/www/bi/utils/stat/report_caiwu_day.php
+#%   /home/y/var/www/bi/bin/run/quick_driver_accept_asap.php [quick_driver_accept_asap]
+#%   /home/y/var/www/bi/bin/run/quick_driver_accept_asapsz.php  [quick_driver_accept_asapsz]
+x    /home/y/var/www/bi/utils/data_quality_report.php
+x    /home/y/var/www/bi/utils/data_quality_week_report.php
+x    /home/y/var/www/bi/utils/week_shudanj.php
+@    /home/y/var/www/bi/utils/new_coupon_info.php
+@    /home/y/var/www/bi/utils/message_day_report.php
+x    /home/y/var/www/bi/bin/run/driver_finish.sh
+@    /home/y/var/www/bi/utils/late.php
+@    /home/y/var/www/bi/utils/miss.php
+@    /home/y/var/www/bi/utils/ods_activity_rebate_invite.php
